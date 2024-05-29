@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-image: url('bghome.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        .justified {
+            text-align: justify;
+        }
+
+        .gallery-container {
+            width: 500px;
+            margin: 0 auto;
+            position: relative;
+            text-align: center;
+        }
+
+        .image-box {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: auto;
+        }
+
+        .btn {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #b3b3b3;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: x-large;
+        }
+
+        #prevBtn {
+            left: 10px;
+        }
+
+        #nextBtn {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <a href="main.html">
+        <img src="xicon.png" align="right" style="width:50px;height:50px;">
+    </a>
+    <div class="gallery-container">
+        <div class="image-box">
+            <img src="image1.jpg" alt="Image 1">
+            <button class="btn" id="prevBtn">&lt;</button>
+            <button class="btn" id="nextBtn">&gt;</button>
+        </div>
+    </div>
+    <script>
+        const images = ["events/orsem/orsem 1.jpg", "events/orsem/orsem 2.jpg", "events/orsem/orsem 3.jpg"]; 
+        let currentIndex = 0;
+        const imageBox = document.querySelector('.image-box');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function showImage(index) {
+            imageBox.innerHTML = `<img src="${images[index]}" alt="Image ${index + 1}">`;
+            imageBox.appendChild(prevBtn);
+            imageBox.appendChild(nextBtn);
+        }
+
+        showImage(currentIndex);
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        });
+    </script>
+
+  
+    <p align="center">Graduation is a significant milestone marking the completion of an academic journey, usually a high school, and college. It symbolizes years of dedication, hard work, and learning. During a graduation ceremony, students receive their diplomas or degrees, often while wearing traditional caps and gowns. This event not only celebrates academic achievements but also signifies the transition to a new phase of life.
+    </p>
+     
+
+</body>
+</html>
